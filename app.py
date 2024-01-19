@@ -1,7 +1,10 @@
 from flask import Flask, render_template
 
 from flask_socketio import SocketIO, send, emit
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
 chat = []
 
@@ -9,7 +12,7 @@ app = Flask(__name__,template_folder="templates")
 
 
 
-app.config['SECRET_KEY'] =  'secret'
+app.config['SECRET_KEY'] =  os.getenv('SECRET_KEY')
 socketio = SocketIO(app)    
 
 @app.route('/')
